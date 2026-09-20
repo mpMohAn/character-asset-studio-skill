@@ -1,0 +1,4 @@
+interface:
+  display_name: "Character Asset Studio"
+  short_description: "Build consistent reusable character asset systems"
+  default_prompt: "Use $character-asset-studio to plan and produce a consistent character and equipment asset set."
