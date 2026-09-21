@@ -1,0 +1,17 @@
+{
+  "variants": [
+    {
+      "variantId": "set-01-neutral-none",
+      "characterId": "character.example",
+      "expressionId": "expression.neutral",
+      "poseId": "pose.neutral",
+      "equipmentIds": [],
+      "labels": ["first-without-equipment"],
+      "status": "draft",
+      "attempts": [],
+      "approvedOutput": null,
+      "qaReport": null,
+      "excluded": false
+    }
+  ]
+}
