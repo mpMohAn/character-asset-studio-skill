@@ -24,6 +24,7 @@ manifest = load_module("project_manifest", ROOT / "scripts/project_manifest.py")
 pipeline = load_module("asset_pipeline", ROOT / "scripts/asset_pipeline.py")
 qa = load_module("asset_qa", ROOT / "scripts/asset_qa.py")
 labels = load_module("rule_labels", ROOT / "scripts/rule_labels.py")
+palette = load_module("palette_extract", ROOT / "scripts/palette_extract.py")
 
 
 class ManifestTests(unittest.TestCase):
@@ -97,6 +98,29 @@ class LabelTests(unittest.TestCase):
             ],
         }
         self.assertFalse(labels.resolve(document)["valid"])
+
+
+class PaletteTests(unittest.TestCase):
+    def test_extracts_visible_source_colors(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "palette.png"
+            image = Image.new("RGBA", (4, 1), (0, 0, 0, 0))
+            image.putdata([(255, 0, 0, 255), (255, 0, 0, 255), (0, 0, 0, 255), (1, 2, 3, 0)])
+            image.save(source)
+            result = palette.extract(source, 2, 16)
+            self.assertEqual(result["sampledPixels"], 3)
+            self.assertEqual(result["swatches"][0]["hex"], "#FF0000")
+            self.assertAlmostEqual(sum(item["coverage"] for item in result["swatches"]), 1.0)
+
+    def test_excludes_flat_corner_background(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "background.png"
+            image = Image.new("RGBA", (5, 5), (240, 230, 190, 255))
+            image.putpixel((2, 2), (220, 40, 20, 255))
+            image.save(source)
+            result = palette.extract(source, 2, 16, 20)
+            self.assertEqual(result["sampledPixels"], 1)
+            self.assertEqual(result["swatches"][0]["hex"], "#DC2814")
 
 
 if __name__ == "__main__":
