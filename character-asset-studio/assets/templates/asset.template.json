@@ -1,0 +1,13 @@
+{
+  "assetId": "character.example",
+  "kind": "character",
+  "version": "1.0.0",
+  "status": "draft",
+  "source": "originals/example.png",
+  "master": null,
+  "canvas": { "width": 2048, "height": 2048 },
+  "anchors": {},
+  "labels": [],
+  "parentVersions": [],
+  "notes": []
+}
