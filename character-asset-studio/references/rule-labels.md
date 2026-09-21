@@ -28,6 +28,8 @@ Narrower assignments override broader assignments only when the label definition
 | `preserve-ground-line` | Keep feet/baseline stable | Deterministic alignment |
 | `first-without-equipment` | First variant is expression-only | Matrix validation |
 | `manual-approval` | Stop before dependent batch work | Workflow gate |
+| `palette-locked` | Preserve the approved source-derived palette | Palette extraction and visual/color QA |
+| `physics-locked` | Reuse the approved physical model and motion phase | Manifest and pose/interaction review |
 
 ## Parameterized assignment
 
