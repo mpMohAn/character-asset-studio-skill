@@ -14,6 +14,8 @@ Build a controlled asset system rather than a collection of unrelated generation
 3. When creating or registering reusable assets, read [asset-specification.md](references/asset-specification.md).
 4. Before generation, correction, background removal, QA, or export, read [production-and-qa.md](references/production-and-qa.md).
 5. For multi-angle, animation, vehicle, game, VFX, or 3D deliverables, also read [rigging-and-3d.md](references/rigging-and-3d.md).
+6. For reusable constraints or project labels, read [rule-labels.md](references/rule-labels.md).
+7. For manifests, lifecycle states, long-running work, or a web implementation, read [project-system.md](references/project-system.md).
 
 Ask only for missing decisions that materially change the result. Prefer one compact intake round. If references already establish an answer, state the inference and proceed.
 
@@ -27,6 +29,8 @@ Ask only for missing decisions that materially change the result. Prefer one com
 - Perform background removal as a separate edit after generation when clean transparency is required. A checkerboard appearance is not proof of alpha transparency.
 - Use deterministic processing for canvas size, alignment, padding, alpha checks, filenames, contact sheets, and ZIP packaging.
 - Preserve the original upload and every approved master. Create a new version instead of silently overwriting visual identity.
+- Resolve reusable rule labels before production. Record the resolved rules in the job manifest so a resumed task behaves identically.
+- For work that may exceed one execution quota, divide the matrix into idempotent chunks and checkpoint after every completed asset.
 
 ## Approval gates
 
@@ -59,3 +63,5 @@ Before delivery, report:
 - manifest/package location when multiple files are delivered.
 
 Run `scripts/asset_qa.py` on PNG/WebP exports when local files are available. Treat its report as structural QA, not a substitute for visual review.
+
+Use `scripts/asset_pipeline.py` for deterministic normalization, contact sheets, and ZIP packaging. Use `scripts/project_manifest.py` to initialize or validate project manifests from `assets/templates/`.
