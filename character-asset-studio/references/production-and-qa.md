@@ -5,16 +5,18 @@ Use this reference for generation, editing, background removal, correction, expo
 ## Production sequence
 
 1. Freeze the output contract and selected master versions.
-2. Choose a pose whose gesture supports both expression and equipment.
-3. Create a pose/silhouette guide for complex interaction.
-4. Generate or assemble one character variant on a roomy master canvas.
-5. Inspect face, anatomy, permanent details, equipment design, grip/contact, perspective, and occlusion.
-6. Repair only the defective region when possible.
-7. Remove the background in a distinct edit while preserving all foreground subjects.
-8. Inspect alpha edges on light, dark, saturated, and checkerboard backgrounds.
-9. Normalize scale, ground line, canvas, and safe margins deterministically.
-10. Run structural QA and inspect the final display-size preview.
-11. Approve individual assets before assembling sheets or packages.
+2. Extract, review, and freeze the source palette before writing the generation prompt.
+3. Freeze applicable physical properties and the intended instant in time.
+4. Choose a pose whose gesture supports both expression and equipment.
+5. Create a pose/silhouette guide for complex interaction.
+6. Generate or assemble one character variant on a roomy master canvas.
+7. Inspect face, anatomy, permanent details, exact palette, equipment design, grip/contact, perspective, physics, and occlusion.
+8. Repair only the defective region when possible.
+9. Remove the background in a distinct edit while preserving all foreground subjects.
+10. Inspect alpha edges on light, dark, saturated, and checkerboard backgrounds.
+11. Normalize scale, ground line, canvas, and safe margins deterministically.
+12. Run structural QA and inspect the final display-size preview.
+13. Approve individual assets before assembling sheets or packages.
 
 When using an image editor/generator for transparency, use this instruction unless the user requests different treatment:
 
@@ -27,7 +29,9 @@ When using an image editor/generator for transparency, use this instruction unle
 - No unrequested teeth, garments, ornaments, outlines, patches, or duplicated parts.
 - Eyes remain structurally correct, including inside helmets and glasses.
 - Equipment retains approved shape, colors, patterns, rings, logos, and material.
+- Generated colors remain within the approved palette/tolerances; unexpected colors require review.
 - Hands contact equipment naturally; equipment does not float.
+- Weight, balance, gravity, support, wind response, cloth/hair motion, and the selected motion phase agree with each other unless an intentional stylized exception is recorded.
 - Pose and gesture support meaning. Sadness should not inherit a celebratory gesture without a deliberate reason.
 - No subject, shadow, glow, ray, weapon, tail, horn, or tool is clipped.
 - No neighboring sprite or partial equipment is present.
