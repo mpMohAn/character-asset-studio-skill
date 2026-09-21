@@ -16,6 +16,7 @@ Build a controlled asset system rather than a collection of unrelated generation
 5. For multi-angle, animation, vehicle, game, VFX, or 3D deliverables, also read [rigging-and-3d.md](references/rigging-and-3d.md).
 6. For reusable constraints or project labels, read [rule-labels.md](references/rule-labels.md).
 7. For manifests, lifecycle states, long-running work, or a web implementation, read [project-system.md](references/project-system.md).
+8. Before any render or pose change, read [palette-and-physics.md](references/palette-and-physics.md) and freeze the source palette and applicable physical properties.
 
 Ask only for missing decisions that materially change the result. Prefer one compact intake round. If references already establish an answer, state the inference and proceed.
 
@@ -31,6 +32,8 @@ Ask only for missing decisions that materially change the result. Prefer one com
 - Preserve the original upload and every approved master. Create a new version instead of silently overwriting visual identity.
 - Resolve reusable rule labels before production. Record the resolved rules in the job manifest so a resumed task behaves identically.
 - For work that may exceed one execution quota, divide the matrix into idempotent chunks and checkpoint after every completed asset.
+- Extract and approve a source-derived palette before generation. Treat palette changes as explicit revisions, not creative freedom.
+- Define only the physical properties that affect the frame: scale, mass distribution, gravity, support, wind or medium, material response, motion phase, and time. Preserve deliberate stylization while keeping cause and effect coherent.
 
 ## Approval gates
 
@@ -65,3 +68,4 @@ Before delivery, report:
 Run `scripts/asset_qa.py` on PNG/WebP exports when local files are available. Treat its report as structural QA, not a substitute for visual review.
 
 Use `scripts/asset_pipeline.py` for deterministic normalization, contact sheets, and ZIP packaging. Use `scripts/project_manifest.py` to initialize or validate project manifests from `assets/templates/`.
+Use `scripts/palette_extract.py` to derive a candidate palette from approved reference pixels before writing generation prompts.
