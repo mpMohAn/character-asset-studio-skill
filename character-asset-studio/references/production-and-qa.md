@@ -55,3 +55,23 @@ Omit expected dimensions when inspecting heterogeneous masters. The script repor
 - Build contact sheets and ZIPs only from final approved exports.
 
 For a contact sheet, use equal cells, consistent ground lines, explicit gutters, and enough outer padding that glows or long equipment remain intact.
+
+## Deterministic commands
+
+Normalize an approved asset without upscaling it:
+
+```bash
+python3 scripts/asset_pipeline.py normalize source.png output.png --width 300 --height 300 --padding 8 --ground 8
+```
+
+Build a contact sheet from approved individual exports:
+
+```bash
+python3 scripts/asset_pipeline.py contact-sheet exports preview.png --columns 4 --cell-width 300 --cell-height 300 --gutter 16
+```
+
+Create a reproducible ZIP with hashes:
+
+```bash
+python3 scripts/asset_pipeline.py package exports package.zip --manifest project.json
+```
