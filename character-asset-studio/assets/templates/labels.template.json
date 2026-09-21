@@ -1,0 +1,17 @@
+{
+  "definitions": [
+    { "id": "identity-locked", "version": "1.0.0", "overridable": false, "rules": { "identityLocked": true } },
+    { "id": "face-locked", "version": "1.0.0", "overridable": false, "rules": { "faceLocked": true } },
+    { "id": "body-fixed", "version": "1.0.0", "overridable": false, "rules": { "bodyFixed": true } },
+    { "id": "same-size", "version": "1.0.0", "overridable": true, "rules": {} },
+    { "id": "equipment-locked", "version": "1.0.0", "overridable": false, "rules": { "equipmentLocked": true } },
+    { "id": "transparent-background", "version": "1.0.0", "overridable": false, "rules": { "alphaRequired": true } },
+    { "id": "no-teeth", "version": "1.0.0", "overridable": false, "rules": { "visibleTeeth": false } },
+    { "id": "no-outline", "version": "1.0.0", "overridable": false, "rules": { "outerStroke": false } },
+    { "id": "safe-padding", "version": "1.0.0", "overridable": true, "rules": {} },
+    { "id": "preserve-ground-line", "version": "1.0.0", "overridable": true, "rules": { "preserveGroundLine": true } },
+    { "id": "first-without-equipment", "version": "1.0.0", "overridable": false, "rules": { "firstVariantEquipment": null } },
+    { "id": "manual-approval", "version": "1.0.0", "overridable": true, "rules": { "approvalRequired": true } }
+  ],
+  "assignments": []
+}
