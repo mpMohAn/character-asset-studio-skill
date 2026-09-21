@@ -4,6 +4,13 @@
   "status": "queued",
   "projectId": "project.example",
   "resolvedRuleHash": "replace-at-runtime",
+  "paletteVersion": null,
+  "physicalModel": {
+    "gravity": { "direction": [0, 1], "strength": "normal" },
+    "medium": "still-air",
+    "wind": { "direction": [0, 0], "strength": "none" },
+    "time": { "mode": "still", "phase": null }
+  },
   "inputVersions": {},
   "provider": { "name": null, "settings": {} },
   "pendingVariantIds": [],
