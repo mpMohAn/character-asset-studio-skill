@@ -11,7 +11,9 @@
     { "id": "safe-padding", "version": "1.0.0", "overridable": true, "rules": {} },
     { "id": "preserve-ground-line", "version": "1.0.0", "overridable": true, "rules": { "preserveGroundLine": true } },
     { "id": "first-without-equipment", "version": "1.0.0", "overridable": false, "rules": { "firstVariantEquipment": null } },
-    { "id": "manual-approval", "version": "1.0.0", "overridable": true, "rules": { "approvalRequired": true } }
+    { "id": "manual-approval", "version": "1.0.0", "overridable": true, "rules": { "approvalRequired": true } },
+    { "id": "palette-locked", "version": "1.0.0", "overridable": false, "rules": { "paletteLocked": true } },
+    { "id": "physics-locked", "version": "1.0.0", "overridable": false, "rules": { "physicalModelLocked": true } }
   ],
   "assignments": []
 }
