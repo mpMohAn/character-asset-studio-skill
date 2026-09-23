@@ -1,0 +1,57 @@
+{
+  "schemaVersion": "1.0",
+  "mode": "cast-composition",
+  "assembly": {
+    "strategy": "scene-first",
+    "order": "back-to-front",
+    "backgroundPlate": "",
+    "blockingPlan": "",
+    "checkpointAfterEachPlacement": true
+  },
+  "cast": [
+    {
+      "characterId": "max",
+      "masterId": "character.max",
+      "masterVersion": "1.0.0",
+      "identityReference": "",
+      "role": "",
+      "action": "",
+      "expression": "",
+      "placement": {
+        "position": "",
+        "depth": "",
+        "facing": "",
+        "scale": 1.0
+      },
+      "nonTransferableTraits": []
+    },
+    {
+      "characterId": "jax",
+      "masterId": "character.jax",
+      "masterVersion": "1.0.0",
+      "identityReference": "",
+      "role": "",
+      "action": "",
+      "expression": "",
+      "placement": {
+        "position": "",
+        "depth": "",
+        "facing": "",
+        "scale": 1.0
+      },
+      "nonTransferableTraits": []
+    }
+  ],
+  "environment": {
+    "description": "",
+    "lighting": "",
+    "physics": ""
+  },
+  "validation": {
+    "minimumUniqueMasters": 2,
+    "maximumUniqueMasters": null,
+    "preventIdentityCollapse": true,
+    "preventCrossIdentityLeakage": true,
+    "requireEveryCastEntry": true
+  }
+}

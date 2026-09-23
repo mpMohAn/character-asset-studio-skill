@@ -1,4 +1,14 @@
 interface:
-  display_name: "Character Asset Studio"
-  short_description: "Build consistent reusable character asset systems"
-  default_prompt: "Use $character-asset-studio to plan and produce a consistent character and equipment asset set."
+  display_name: Character Asset Studio
+  short_description: Build consistent reusable character asset systems
+  default_prompt: Use $character-asset-studio to plan and produce a consistent character
+    and equipment asset set.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

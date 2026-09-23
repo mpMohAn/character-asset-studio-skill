@@ -11,7 +11,7 @@ import zipfile
 from pathlib import Path
 
 try:
-    from PIL import Image
+    from PIL import Image, ImageDraw, ImageFont
 except ImportError as exc:
     raise SystemExit("Pillow is required: python3 -m pip install Pillow") from exc
 
@@ -71,6 +71,32 @@ def contact_sheet(files: list[Path], output: Path, columns: int, gutter: int, ce
     sheet.save(output)
 
 
+def comparison_sheet(with_skill: Path, without_skill: Path, output: Path, cell: tuple[int, int], gutter: int) -> None:
+    """Build a labeled, side-by-side skill versus baseline comparison."""
+    cell_width, cell_height = cell
+    label_height = 44
+    sheet = Image.new(
+        "RGBA",
+        (2 * cell_width + 3 * gutter, cell_height + label_height + 2 * gutter),
+        (242, 245, 243, 255),
+    )
+    draw = ImageDraw.Draw(sheet)
+    font = ImageFont.load_default(size=18)
+    for index, (path, label) in enumerate(((with_skill, "With skill"), (without_skill, "Without skill"))):
+        with Image.open(path) as opened:
+            image = opened.convert("RGBA")
+        image.thumbnail((cell_width, cell_height), Image.Resampling.LANCZOS)
+        cell_x = gutter + index * (cell_width + gutter)
+        image_x = cell_x + (cell_width - image.width) // 2
+        image_y = label_height + gutter + (cell_height - image.height) // 2
+        sheet.alpha_composite(image, (image_x, image_y))
+        box = draw.textbbox((0, 0), label, font=font)
+        text_width = box[2] - box[0]
+        draw.text((cell_x + (cell_width - text_width) // 2, gutter), label, fill=(24, 42, 36, 255), font=font)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    sheet.save(output)
+
+
 def package(source: Path, output: Path, manifest: Path | None) -> None:
     files = sorted(path for path in source.rglob("*") if path.is_file())
     if manifest:
@@ -110,6 +136,13 @@ def main() -> int:
     sheet.add_argument("--gutter", type=int, default=16)
     sheet.add_argument("--cell-width", type=int, required=True)
     sheet.add_argument("--cell-height", type=int, required=True)
+    compare = commands.add_parser("compare")
+    compare.add_argument("with_skill", type=Path)
+    compare.add_argument("without_skill", type=Path)
+    compare.add_argument("output", type=Path)
+    compare.add_argument("--cell-width", type=int, required=True)
+    compare.add_argument("--cell-height", type=int, required=True)
+    compare.add_argument("--gutter", type=int, default=20)
     pack = commands.add_parser("package")
     pack.add_argument("source", type=Path)
     pack.add_argument("output", type=Path)
@@ -120,6 +153,8 @@ def main() -> int:
             normalize(args.source, args.output, args.width, args.height, args.padding, args.ground)
         elif args.command == "contact-sheet":
             contact_sheet(image_paths(args.source), args.output, args.columns, args.gutter, (args.cell_width, args.cell_height))
+        elif args.command == "compare":
+            comparison_sheet(args.with_skill, args.without_skill, args.output, (args.cell_width, args.cell_height), args.gutter)
         else:
             package(args.source, args.output, args.manifest)
     except (OSError, ValueError, json.JSONDecodeError) as exc:

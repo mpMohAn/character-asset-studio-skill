@@ -37,6 +37,27 @@ class ManifestTests(unittest.TestCase):
         data["variants"] = [{"variantId": "v1"}, {"variantId": "v1"}]
         self.assertTrue(any("duplicate" in issue for issue in manifest.validate_project(data)))
 
+    def test_fusion_template_has_provenance_and_gates(self):
+        data = json.loads((ROOT / "assets/templates/fusion.template.json").read_text())
+        self.assertEqual(data["mode"], "selected-fusion")
+        self.assertIn("traitMap", data)
+        self.assertIn("provenance", data)
+        self.assertEqual(
+            set(data["approval"]),
+            {"concept", "designLock", "productionLock"},
+        )
+
+    def test_cast_template_requires_distinct_master_identities(self):
+        data = json.loads((ROOT / "assets/templates/cast.template.json").read_text())
+        master_ids = {entry["masterId"] for entry in data["cast"]}
+        self.assertEqual(data["mode"], "cast-composition")
+        self.assertGreaterEqual(len(master_ids), 2)
+        self.assertEqual(data["validation"]["minimumUniqueMasters"], 2)
+        self.assertIsNone(data["validation"]["maximumUniqueMasters"])
+        self.assertTrue(data["validation"]["preventIdentityCollapse"])
+        self.assertTrue(data["assembly"]["checkpointAfterEachPlacement"])
+        self.assertTrue(data["validation"]["requireEveryCastEntry"])
+
 
 class PipelineTests(unittest.TestCase):
     def test_normalize_and_package(self):
@@ -70,6 +91,18 @@ class PipelineTests(unittest.TestCase):
             pipeline.contact_sheet(sorted(root.glob("*.png")), output, 2, 4, (20, 20))
             with Image.open(output) as sheet:
                 self.assertEqual(sheet.size, (52, 52))
+
+    def test_comparison_sheet_dimensions(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            with_skill = root / "with.png"
+            without_skill = root / "without.png"
+            output = root / "comparison.png"
+            Image.new("RGBA", (20, 40), (255, 0, 0, 255)).save(with_skill)
+            Image.new("RGBA", (40, 20), (0, 0, 255, 255)).save(without_skill)
+            pipeline.comparison_sheet(with_skill, without_skill, output, (100, 80), 10)
+            with Image.open(output) as comparison:
+                self.assertEqual(comparison.size, (230, 144))
 
 
 class LabelTests(unittest.TestCase):

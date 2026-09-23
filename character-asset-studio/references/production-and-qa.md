@@ -14,8 +14,8 @@ Use this reference for generation, editing, background removal, correction, expo
 8. Repair only the defective region when possible.
 9. Remove the background in a distinct edit while preserving all foreground subjects.
 10. Inspect alpha edges on light, dark, saturated, and checkerboard backgrounds.
-11. Normalize scale, ground line, canvas, and safe margins deterministically.
-12. Run structural QA and inspect the final display-size preview.
+11. Normalize scale, ground line, canvas, and safe margins deterministically. Treat this as mandatory whenever visible pixels touch or enter the required safe margin.
+12. Run structural QA on the normalized export and inspect the final display-size preview. If padding, edge-contact, alpha, or dimensions fail, do not deliver; correct and rerun QA.
 13. Approve individual assets before assembling sheets or packages.
 
 When using an image editor/generator for transparency, use this instruction unless the user requests different treatment:
@@ -67,6 +67,14 @@ Normalize an approved asset without upscaling it:
 ```bash
 python3 scripts/asset_pipeline.py normalize source.png output.png --width 300 --height 300 --padding 8 --ground 8
 ```
+
+For a skill-versus-baseline test, normalize both outputs to the same cell size, then build one labeled side-by-side comparison:
+
+```bash
+python3 scripts/asset_pipeline.py compare with-skill.png without-skill.png comparison.png --cell-width 1024 --cell-height 1024
+```
+
+Keep **With skill** on the left and **Without skill** on the right. Use the same source reference, requested change, generator/model, aspect ratio, and transparency contract for both runs. The baseline prompt may omit the skill's controls, but must not change the target outcome. Embed the comparison sheet in the final response before the assessment table; a textual statement that it was created, a standalone link, or separately displayed generations does not satisfy the comparison contract.
 
 Build a contact sheet from approved individual exports:
 
