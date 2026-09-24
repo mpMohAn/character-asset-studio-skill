@@ -93,19 +93,100 @@ generation batch required to finish it.
 
 ## Skill versus normal generation
 
-The left side of each sheet was generated with Character Asset Studio's identity, equipment, palette, and motion constraints. The right side used a direct image request without the skill. These examples are representative tests, not guarantees of identical results on every generation.
+The left side of every comparison uses Character Asset Studio's identity, style, palette, equipment, physics, and composition controls. The right side uses a shorter direct image request without the skill. The same source character is used on both sides. These are representative tests rather than a promise of identical output from every generation.
 
-### Happy running action
+### Test reference
+
+The reference supplies the authoritative front and back design, shield construction, symbols, palette, proportions, and illustration style.
+
+![Dwarf warrior source reference](docs/images/dwarf-reference.webp)
+
+### 1. Transparent master, angles, actions, expressions, equipment, and physics
+
+Both sides requested the same eight outputs in the same order:
+
+| Row | Panels |
+|---|---|
+| Turnaround | Front master · three-quarter left · profile · back |
+| Variants | Happy run · angry attack · focused shield defense · surprised reaction |
+
+![Character Asset Studio full asset-system comparison](docs/images/dwarf-asset-system-comparison.webp)
+
+The checkerboard exposes transparency. The controlled sheet preserves alpha, the supplied back emblem, the shoulder shield, the costume palette, and a more consistent source style while coordinating balance, grip, weight, beard motion, and clothing motion with each action.
+
+<details>
+<summary>Open the controlled transparent PNG</summary>
+
+![Transparent multi-angle dwarf character asset sheet](docs/images/dwarf-asset-system-with-skill.png)
+
+</details>
+
+### 2. Camera, lens intent, equipment use, perspective, and scene direction
+
+Both sides requested four matching shots:
+
+| Panel | Direction |
+|---|---|
+| Top left | 85 mm close portrait with readable face and shallow depth of field |
+| Top right | 50 mm medium defense with shield grip, weight, contact, and occlusion |
+| Bottom left | 35 mm full-body charge with grounded momentum and secondary motion |
+| Bottom right | 24 mm low-angle hero shot with a strong readable silhouette |
+
+![Character Asset Studio camera and equipment direction comparison](docs/images/dwarf-direction-comparison.webp)
+
+The skill-directed result deliberately separates shot purpose, protects character identity, keeps the shield functional, controls perspective, and limits environmental detail to what supports the focal action. The baseline favors spectacle and additional effects, but changes more design details and makes the four shots less distinct in purpose.
+
+### 3. Focused action and expression tests
+
+These earlier tests isolate smaller requests so action or expression fidelity can be inspected without the larger capability sheet.
+
+<details>
+<summary>Happy running comparison</summary>
 
 ![Character Asset Studio happy running comparison](docs/images/running-happy-comparison.webp)
 
-### Neutral attack action
+</details>
+
+<details>
+<summary>Neutral attack comparison</summary>
 
 ![Character Asset Studio neutral attack comparison](docs/images/attack-neutral-comparison.webp)
 
-### Angry idle expression
+</details>
+
+<details>
+<summary>Angry idle comparison</summary>
 
 ![Character Asset Studio angry idle comparison](docs/images/idle-angry-comparison.webp)
+
+</details>
+
+## Available production modes
+
+Character Asset Studio is not limited to expressions and actions. Choose the mode that matches the deliverable:
+
+| Mode | What it produces | Recommended source |
+|---|---|---|
+| Exploration | Clearly marked concept directions before identity is locked | Description, mood board, or rough sketch |
+| Character master | Approved neutral identity, proportions, palette, costume, style, and permanent details | Front or three-quarter reference |
+| Transparent master | Clean lossless PNG with alpha, safe padding, and no clipped details | Approved character master |
+| Multi-angle pack | Front, three-quarter, profile, back, and optional turntable views | Front/back references, multi-view pack, or 3D proxy |
+| Action variants | Running, jumping, attacking, defending, idle, custom actions, and equipment-aware poses | Approved character and action brief |
+| Expression variants | Neutral, happy, angry, surprised, focused, custom expressions, and expression/gesture coordination | Approved face and expression map |
+| Equipment and clothing | Extracted or designed masters, angle variants, worn/held/carried placement, attachment anchors, grip, masks, and occlusion | Equipment image, sheet, or written design |
+| Palette control | Sampled source colors, semantic color roles, tolerances, and drift checks | Approved reference |
+| Physics direction | Mass, gravity, balance, inertia, wind, hair, beard, cloth, secondary motion, contact, and collision | Action plus environment |
+| Camera direction | Lens intent, focal length, framing, camera height, angle, depth of field, perspective, and motion treatment | Shot or scene brief |
+| Professional game-art scene | Focal hierarchy, coordinated eyelines, readable silhouettes, purposeful actions, controlled detail, and scene storytelling | Character cast plus scene goal |
+| Multi-character cast | Several distinct characters placed one by one with individual identity locks and shared interaction planning | One approved master per character |
+| Single-character montage | One identity shown performing several coordinated jobs, actions, or expressions in one frame | One approved character master |
+| Trait fusion | A new character combining selected, traceable traits from several sources with provenance and approval gates | Multiple references plus an explicit trait map |
+| Vehicle and mount assets | Character/vehicle scale, seating, hand and foot contact, attachment sockets, perspective, and angle reuse | Character plus vehicle reference |
+| Layered 2D/2.5D plan | Head, face, limbs, hands, equipment, masks, pivots, draw order, and animation states | Approved master and motion list |
+| 3D transition plan | Mesh, materials, skeleton, blend shapes, sockets, camera presets, turntable, and `.blend`/`.glb` deliverables | Multi-view design pack |
+| Correction and regional repair | Targeted repair of face, hands, equipment, edges, or one failed region while preserving approved areas | Failed asset plus approved master |
+| QA and packaging | Alpha checks, size normalization, safe margins, filenames, manifests, contact sheets, sprite sheets, WebP/PNG exports, and ZIP packaging | Approved final assets |
+| Resumable project | Checkpoints, completed/pending variants, retry state, validation failures, versions, and the next smallest batch | Saved project manifest |
 
 ## Supported features
 
@@ -151,11 +232,13 @@ The planned plugin will wrap the `character-asset-studio/` folder as its skills-
 
 ## Version and updates
 
-**Current documentation version:** `0.2.0-pre`  
+**Current documentation version:** `0.2.1-pre`
+
 **Status:** pre-release skill; plugin packaging pending
 
 | Version | Update |
 |---|---|
+| `0.2.1-pre` | Added the dwarf reference showcase, transparent multi-angle asset-system comparison, camera/lens/equipment comparison, and the complete production-mode catalog |
 | `0.2.0-pre` | Added professional game-art direction, camera and lens planning, equipment choreography, multi-character scenes, montage and fusion modes, palette/physics controls, and resumable workflows |
 | `0.1.0` | Initial consistent character-asset workflow, reference intake, asset specification, generation, and quality checks |
 
