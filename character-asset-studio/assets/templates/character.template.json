@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "1.1",
   "kind": "character",
   "assetId": "",
   "version": "",
@@ -27,14 +27,110 @@
     "body": {
       "heightToHeadRatio": null,
       "shoulderToHipRatio": null,
-      "silhouette": ""
+      "silhouette": "",
+      "proportionSource": "",
+      "physicalMeasurements": {
+        "height": {
+          "value": null,
+          "unit": "cm",
+          "status": "unknown",
+          "sourceEvidence": ""
+        },
+        "weight": {
+          "value": null,
+          "unit": "kg",
+          "status": "unknown",
+          "sourceEvidence": ""
+        },
+        "chestCircumference": {
+          "value": null,
+          "unit": "cm",
+          "status": "unknown",
+          "sourceEvidence": ""
+        },
+        "waistCircumference": {
+          "value": null,
+          "unit": "cm",
+          "status": "unknown",
+          "sourceEvidence": ""
+        },
+        "hipCircumference": {
+          "value": null,
+          "unit": "cm",
+          "status": "unknown",
+          "sourceEvidence": ""
+        }
+      },
+      "anatomy": {
+        "neck": {
+          "description": "",
+          "visibility": "unknown",
+          "sourceEvidence": ""
+        },
+        "shoulders": {
+          "description": "",
+          "visibility": "unknown",
+          "sourceEvidence": ""
+        },
+        "chest": {
+          "description": "",
+          "visibility": "unknown",
+          "sourceEvidence": ""
+        },
+        "torso": {
+          "description": "",
+          "visibility": "unknown",
+          "sourceEvidence": ""
+        },
+        "abdomen": {
+          "definition": "",
+          "visibleMuscleSegments": "unknown",
+          "visibility": "unknown",
+          "sourceEvidence": ""
+        },
+        "waist": {
+          "description": "",
+          "visibility": "unknown",
+          "sourceEvidence": ""
+        },
+        "hips": {
+          "description": "",
+          "visibility": "unknown",
+          "sourceEvidence": ""
+        },
+        "arms": {
+          "description": "",
+          "visibility": "unknown",
+          "sourceEvidence": ""
+        },
+        "legs": {
+          "description": "",
+          "visibility": "unknown",
+          "sourceEvidence": ""
+        }
+      },
+      "functionalStrength": {
+        "description": "",
+        "basis": "unknown",
+        "sourceEvidence": ""
+      }
     },
     "clothing": {
+      "underlayers": [
+        {
+          "name": "",
+          "description": "",
+          "visibility": "unknown",
+          "sourceEvidence": ""
+        }
+      ],
       "top": "",
       "bottom": "",
       "outerwear": "",
       "footwear": "",
-      "accessories": []
+      "accessories": [],
+      "layerOrder": [],
+      "materialBehavior": ""
     }
   },
   "size": {
@@ -85,11 +181,26 @@
     "identity": "draft",
     "proportions": "draft",
     "clothing": "draft",
-    "expression": "draft"
+    "expression": "draft",
+    "anatomy": "draft",
+    "clothingLayers": "draft"
   },
   "approval": {
     "designLock": false,
     "productionLock": false
   },
-  "notes": []
+  "notes": [],
+  "renderGuidance": {
+    "shadow": {
+      "contact": "",
+      "castDirection": "scene-dependent",
+      "softness": "scene-dependent",
+      "lightSource": "scene-dependent"
+    },
+    "muscleDefinition": {
+      "rest": "",
+      "underLoad": "",
+      "lightingResponse": ""
+    }
+  }
 }
