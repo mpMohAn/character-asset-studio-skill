@@ -1,6 +1,6 @@
 ---
 name: character-asset-studio
-description: Plan, generate, inspect, and package consistent reusable character, expression, pose, equipment, clothing, vehicle, sprite, or mascot assets. Use when visual identity and recurring object details must remain stable across an asset set; do not use for an unrelated one-off image edit.
+description: Plan, generate, inspect, and package consistent reusable character, expression, pose, equipment, clothing, vehicle, sprite, or mascot assets, including controlled fusion of two or three distinct characters. Use when visual identity and recurring object details must remain stable across an asset set; do not use for an unrelated one-off image edit.
 ---
 
 # Character Asset Studio
@@ -17,7 +17,7 @@ Build a controlled asset system rather than a collection of unrelated generation
 6. For reusable constraints or project labels, read [rule-labels.md](references/rule-labels.md).
 7. For manifests, lifecycle states, long-running work, or a web implementation, read [project-system.md](references/project-system.md).
 8. Before any render or pose change, read [palette-and-physics.md](references/palette-and-physics.md) and freeze the source palette and applicable physical properties.
-9. For two or more characters in one frame, selected-trait fusion, hybrid characters, or fusion exploration, read [composition-and-fusion.md](references/composition-and-fusion.md).
+9. For two or more characters in one frame, selected-trait fusion, hybrid characters, or fusion exploration, read [composition-and-fusion.md](references/composition-and-fusion.md). For fusion, enforce its two-or-three-source limit, component inventory, equipment ledger, and source-style lock before generation.
 10. For any scene, poster, key art, montage, or multi-character composition, read [professional-game-art-direction.md](references/professional-game-art-direction.md) and apply its story, staging, appeal, and anti-AI review gates.
 11. Before rendering a scene, action, equipment interaction, portrait, or key art, read [camera-and-equipment-direction.md](references/camera-and-equipment-direction.md). Freeze a motivated camera package and an equipment-use plan before posing subjects.
 
