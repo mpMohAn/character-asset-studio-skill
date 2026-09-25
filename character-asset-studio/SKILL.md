@@ -79,6 +79,8 @@ Before delivery, report:
 - automated QA findings and any human-review items;
 - manifest/package location when multiple files are delivered.
 
+Run `scripts/validate_asset_locks.py` on character and equipment specs and the fusion manifest before production. The validator checks the referenced exact IDs and versions, required locks, and an interaction for each retained tool. Do not mark a draft approved to bypass missing details.
+
 Run `scripts/asset_qa.py` on PNG/WebP exports when local files are available. Treat its report as structural QA, not a substitute for visual review.
 
 For requested skill-versus-baseline tests, keep the reference, requested change, export contract, and model/tool constant. Show the final results next to each other in one labeled comparison sheet, with **With skill** on the left and **Without skill** on the right. Embed that comparison image directly in the final response, then place the concise assessment table immediately below it. Do not deliver only the table, a file link, or two images shown separately, and do not make the user correlate outputs across earlier messages.
