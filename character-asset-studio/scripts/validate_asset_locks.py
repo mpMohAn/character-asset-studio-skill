@@ -142,6 +142,12 @@ def validate(data, base_dir=None):
             "traitMap.hair.sourceId", "traitMap.expression.sourceId", "traitMap.style.sourceId",
             "actionPlan.pose", "actionPlan.motionPhase", "actionPlan.gazeTarget",
             "actionPlan.centerOfMass", "actionPlan.supportFeet"])
+        if data.get("schemaVersion") == "1.3":
+            for name in ("neck", "shoulders", "chest", "torso", "abdomen", "waist", "hips", "arms", "legs"):
+                if not data.get("traitMap", {}).get("anatomy", {}).get(name, {}).get("sourceId"):
+                    issues.append(f"traitMap.anatomy.{name} lacks a source")
+            issues += required(data, ["actionPlan.shadow.contact", "actionPlan.shadow.castDirection",
+                "actionPlan.shadow.softness", "actionPlan.shadow.lightSource"])
         sources = data.get("sources", [])
         if not 2 <= len(sources) <= 3 or len({s.get("sourceId") for s in sources}) != len(sources):
             issues.append("fusion needs two or three distinct source IDs")
