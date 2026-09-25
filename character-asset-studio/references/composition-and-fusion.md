@@ -61,23 +61,24 @@ Checkpoint the background plate, blocking plan, every approved character layer, 
 
 ## Selected fusion
 
-Create a fusion manifest from `assets/templates/fusion.template.json` before generation.
+Fuse exactly two or three **distinct source identities** into one new character. Count identities, not images or poses. For more than three identities, do not generate a single fusion: ask the user to select two or three, or propose staged separate fusions that the user explicitly chooses. Cast compositions may contain more characters; this limit applies only to fusion.
 
-1. Inventory every source and its approved version.
-2. Assign every visible trait to one source in `traitMap`. Use `new` only for a user-approved bridging feature.
-3. Resolve conflicts explicitly. Source precedence may differ by trait, but every conflict must have one winner or a documented synthesis rule.
-4. Approve the new silhouette and proportion plan before rendered exploration when source shapes differ materially.
-5. Reconcile palette and materials deliberately. Do not average colors or materials by accident.
-6. Generate the fusion as a new identity. Preserve recognizable source contributions without producing a collage of disconnected parts.
-7. Run the normal design-lock and production-lock gates. Source masters remain immutable.
-8. Record provenance in the new master: source IDs, versions, inherited traits, new traits, and approved conflicts.
+Create a fusion manifest from `assets/templates/fusion.template.json` before generation. Keep originals immutable.
+
+1. Inventory **each** source at full available resolution: face, expression, hair and headwear, body proportions, clothing by slot (top, bottom, outerwear, footwear, accessories), all held and worn equipment, palette, materials, and rendering style. Avoid a small roster thumbnail when a larger source exists.
+2. Assign a source ID to every output component. Name the exact feature inherited, including the face/expression, hair, body, each garment, and every tool. Use one source for the underlying face and body anatomy unless the user specifically requests a different split. A recognizable contribution from every source must survive; do not rely on a color or tiny ornament as the sole contribution.
+3. Preserve selected components' shapes, motifs, colors, materials, and function. The fusion is an assembly of source-derived features, not permission to invent new armor, hybrid tools, emblems, hair, jewelry, or decorative parts. Do not add `new` traits or fabricate a visual bridge; if physical joining needs a neutral seam, keep it visually unobtrusive and record it as assembly, not as a new feature.
+4. Resolve collisions by choosing which existing source item occupies each anatomy or clothing slot. Document rejected alternatives. Do not merge two faces, average expressions, combine incompatible body proportions, or layer all clothing indiscriminately. If the user named an expression, use it; otherwise choose and record one source expression.
+5. Build a complete equipment ledger from all selected sources. Preserve each distinct requested tool at most once, unless the user explicitly excludes it. Choose the active tool based on the pose and grip. Place a second tool in the other hand only if its use is anatomically credible; otherwise stow it. Stow remaining tools visibly at the waist or on the back with believable sheaths, straps, anchors, clearances, and weight. For a three-source fusion with three tools, the default is one in hand and two visibly stowed. Keep long tools on the back when waist carry would be implausible. Never turn tools into new hybrids or float them around the body.
+6. Choose one source rendering style as the visual anchor, or follow the user's explicit style choice. Record its medium, linework, edge treatment, shading depth, texture, and detail density. Match the output to that source; do not silently shift painterly, drawn, or stylized references into glossy 3D or photoreal rendering. If styles differ and no source clearly anchors the intended result, present the style choice with the concept before final rendering.
+7. Approve a silhouette/component plan before rendered exploration when shapes differ materially. For a small preview request, create one draft from the documented plan, inspect it, and present it for review. Do not call a generated draft an approved reusable master.
+8. Inspect the result against the inventory and ledger: all assigned traits visible, every selected source traceable, clothing slots coherent, expression readable, all equipment present exactly once and correctly carried, no unassigned feature, style matched, no clipping or anatomy errors. Repair a local defect if possible; regenerate from the component plan when drift is widespread. After approval, record the new master ID/version and full provenance.
 
 ## Fusion exploration
 
-- Limit the first pass to 2–4 materially different concepts.
-- Label all outputs as drafts; none is a reusable master yet.
-- Vary the trait allocation or silhouette logic, not random surface decoration.
-- After selection, write an explicit trait map and restart at the selected-fusion silhouette gate.
+- Explore at most 2–4 materially different allocations of **the same two or three sources** when the user requests options.
+- Label outputs as drafts. Vary which existing source contributes each component and the active/stowed equipment assignment, not random decoration.
+- After selection, complete the trait map and equipment ledger before the selected-fusion design gate.
 
 ## Validation
 
@@ -92,7 +93,7 @@ Reject or repair an output when any of these occur:
 - a requested named character omitted or replaced by another cast member;
 - left/right swaps or inconsistent handedness;
 - incoherent scale, contact, gravity, shadow, wind, or occlusion;
-- fusion traits with no declared source or synthesis rule;
+- fusion traits, expressions, clothing, or equipment with no declared source;\n- more than three source identities in a single fusion;\n- invented hybrid gear, missing or duplicated equipment, or an impossible carrying position;\n- a generic 3D or photoreal style replacing the selected source medium;
 - accidental replacement of a source master.
 
 Repair the smallest defective region first. If contamination spans multiple identities, regenerate the affected character separately and composite it. If the trait map itself is contradictory, stop and request the user’s choice rather than inventing precedence.
