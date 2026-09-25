@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.1",
+  "schemaVersion": "1.2",
   "mode": "selected-fusion",
   "newMasterId": "",
   "sources": [
@@ -19,7 +19,14 @@
           "footwear": "",
           "accessories": []
         },
-        "equipment": [],
+        "equipment": [
+          {
+            "assetId": "",
+            "version": "",
+            "equipmentSpec": "",
+            "designLock": false
+          }
+        ],
         "palette": "",
         "materials": "",
         "style": {
@@ -30,6 +37,11 @@
           "texture": "",
           "detailDensity": ""
         }
+      },
+      "characterSpec": {
+        "assetId": "",
+        "version": "",
+        "designLock": false
       }
     }
   ],
@@ -93,12 +105,33 @@
   "equipmentLedger": [
     {
       "sourceId": "",
-      "item": "",
-      "role": "active | stowed-waist | stowed-back | excluded-by-user",
+      "assetId": "",
+      "version": "",
+      "specRef": "",
+      "role": "",
       "hand": "",
-      "attachment": "",
+      "attachmentAnchor": "",
+      "relativeScaleInHeadUnits": null,
+      "gripPoint": "",
+      "state": "",
+      "action": "",
       "visible": true
     }
   ],
-  "assemblySeams": []
+  "assemblySeams": [],
+  "actionPlan": {
+    "pose": "",
+    "expressionSourceId": "",
+    "motionPhase": "",
+    "gazeTarget": "",
+    "centerOfMass": "",
+    "supportFeet": "",
+    "equipmentInteractions": []
+  },
+  "lockChecks": {
+    "characterSpecsApproved": false,
+    "equipmentSpecsApproved": false,
+    "sizeShapeColorStyleVerified": false,
+    "gripAndCarryVerified": false
+  }
 }
