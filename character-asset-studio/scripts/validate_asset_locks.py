@@ -39,7 +39,7 @@ def normalized_point(value):
         isinstance(v, (int, float)) and not isinstance(v, bool) and 0 <= v <= 1 for v in value)
 
 
-def validate(data, base_dir=None):
+def validate(data, base_dir=None, final=False):
     kind = data.get("kind", "fusion" if data.get("mode") == "selected-fusion" else "")
     issues = required(data, ["assetId", "version", "source.reference", "source.sourceId"])
     if kind == "character":
@@ -142,12 +142,36 @@ def validate(data, base_dir=None):
             "traitMap.hair.sourceId", "traitMap.expression.sourceId", "traitMap.style.sourceId",
             "actionPlan.pose", "actionPlan.motionPhase", "actionPlan.gazeTarget",
             "actionPlan.centerOfMass", "actionPlan.supportFeet"])
-        if data.get("schemaVersion") == "1.3":
+        if data.get("schemaVersion") in ("1.3", "1.4"):
             for name in ("neck", "shoulders", "chest", "torso", "abdomen", "waist", "hips", "arms", "legs"):
                 if not data.get("traitMap", {}).get("anatomy", {}).get(name, {}).get("sourceId"):
                     issues.append(f"traitMap.anatomy.{name} lacks a source")
             issues += required(data, ["actionPlan.shadow.contact", "actionPlan.shadow.castDirection",
                 "actionPlan.shadow.softness", "actionPlan.shadow.lightSource"])
+        if data.get("schemaVersion") == "1.4":
+            issues += required(data, ["fidelityTargets.bodyProportions.sourceId",
+                "fidelityTargets.bodyProportions.heightInHeads",
+                "fidelityTargets.bodyProportions.shoulderToHipRatio",
+                "fidelityTargets.palette.sourceId", "fidelityTargets.palette.baseSwatchesRef",
+                "fidelityTargets.style.sourceId", "fidelityTargets.style.fingerprintRef"])
+            proportions = data.get("fidelityTargets", {}).get("bodyProportions", {})
+            for field in ("heightInHeads", "shoulderToHipRatio"):
+                if not positive_number(proportions.get(field)):
+                    issues.append(f"fidelityTargets.bodyProportions.{field} must be positive")
+            shapes = data.get("fidelityTargets", {}).get("shape", {})
+            if not shapes.get("garmentSourceRefs") or not shapes.get("equipmentSourceRefs"):
+                issues.append("fidelityTargets.shape needs garment and equipment source refs")
+            if shapes.get("noNewMotifs") is not True:
+                issues.append("fidelityTargets.shape.noNewMotifs must be true")
+            if final:
+                review = data.get("review", {})
+                if review.get("status") != "passed" or not review.get("reviewer") or not review.get("approvedVersion"):
+                    issues.append("fusion final review lacks passed status, reviewer, or approved version")
+                for field in ("proportions", "paletteAndSaturation", "sourceShapeAndCostume",
+                              "styleAndDetailDensity", "equipmentAndPose", "unrequestedElements"):
+                    check = review.get(field, {})
+                    if check.get("pass") is not True or not check.get("notes"):
+                        issues.append(f"fusion final review {field} needs pass and evidence notes")
         sources = data.get("sources", [])
         if not 2 <= len(sources) <= 3 or len({s.get("sourceId") for s in sources}) != len(sources):
             issues.append("fusion needs two or three distinct source IDs")
@@ -223,9 +247,10 @@ def verify_reference(base_dir, ref, kind, asset_id, version, label):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("manifest", type=Path)
+    parser.add_argument("--final", action="store_true", help="require a passed source-fidelity review")
     args = parser.parse_args()
     data = json.loads(args.manifest.read_text(encoding="utf-8"))
-    issues = validate(data, args.manifest.parent)
+    issues = validate(data, args.manifest.parent, final=args.final)
     print(json.dumps({"ready": not issues, "issues": issues}, indent=2))
     return 1 if issues else 0
 
