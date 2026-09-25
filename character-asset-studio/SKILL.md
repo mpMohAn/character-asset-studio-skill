@@ -11,7 +11,7 @@ Build a controlled asset system rather than a collection of unrelated generation
 
 1. Determine whether the task is exploration, master-asset creation, variant production, correction, QA, packaging, 2D rigging, or 3D planning.
 2. For a new project or materially incomplete brief, read [intake-and-planning.md](references/intake-and-planning.md).
-3. When creating or registering reusable assets, read [asset-specification.md](references/asset-specification.md).
+3. When creating or registering reusable assets, read [asset-specification.md](references/asset-specification.md) and create versioned character/equipment specs with size, shape, palette, style, and behavior locks.
 4. Before generation, correction, background removal, QA, or export, read [production-and-qa.md](references/production-and-qa.md).
 5. For multi-angle, animation, vehicle, game, VFX, or 3D deliverables, also read [rigging-and-3d.md](references/rigging-and-3d.md).
 6. For reusable constraints or project labels, read [rule-labels.md](references/rule-labels.md).
@@ -46,7 +46,7 @@ Ask only for missing decisions that materially change the result. Prefer one com
 - Art-direct the whole frame as a professional game designer would. Coordinate gaze, facing, action, expression, silhouette, hierarchy, props, environment, and lighting around one readable story beat; reject technically valid but visually unrelated character placements.
 - Remove anything that does not strengthen character, story, gameplay readability, world-building, navigation, or mood. More detail is not automatically better.
 - Choose lens, focal length, camera distance, height, angle, focus, depth of field, shutter behavior, and movement from the intended story and action. Do not add camera terminology that has no visible consequence.
-- Identify equipment before designing the pose. Determine ownership, function, geometry, weight, material, handedness, grip, active state, contacts, and tactical use; then make the body respond to it.
+- Resolve the locked character and equipment versions and their attachment/grip anchors before designing the pose. Identify equipment before designing the pose. Determine ownership, function, geometry, weight, material, handedness, grip, active state, contacts, and tactical use; then make the body respond to it.
 - Treat every approved fusion as a new master with its own identity, version, palette, and provenance; never overwrite the source masters.
 
 ## Approval gates
