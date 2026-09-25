@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "character",
+  "assetId": "",
+  "version": "",
+  "status": "draft",
+  "source": {
+    "reference": "",
+    "sourceId": "",
+    "version": ""
+  },
+  "identity": {
+    "description": "",
+    "face": {
+      "shape": "",
+      "eyes": "",
+      "nose": "",
+      "ears": "",
+      "mouth": "",
+      "markings": ""
+    },
+    "expression": "",
+    "hair": {
+      "shape": "",
+      "color": ""
+    },
+    "body": {
+      "heightToHeadRatio": null,
+      "shoulderToHipRatio": null,
+      "silhouette": ""
+    },
+    "clothing": {
+      "top": "",
+      "bottom": "",
+      "outerwear": "",
+      "footwear": "",
+      "accessories": []
+    }
+  },
+  "size": {
+    "canvasPx": {
+      "width": null,
+      "height": null
+    },
+    "characterBoundsNormalized": {
+      "width": null,
+      "height": null
+    },
+    "groundLineNormalized": null
+  },
+  "palette": [
+    {
+      "role": "",
+      "hex": "",
+      "tolerance": "",
+      "sourceReference": ""
+    }
+  ],
+  "style": {
+    "medium": "",
+    "linework": "",
+    "edges": "",
+    "shading": "",
+    "texture": "",
+    "detailDensity": ""
+  },
+  "anchors": {
+    "leftHand": null,
+    "rightHand": null,
+    "leftHip": null,
+    "rightHip": null,
+    "backUpper": null,
+    "backLower": null,
+    "feet": null
+  },
+  "movement": {
+    "rangeOfMotion": "",
+    "dominantHand": "",
+    "stance": ""
+  },
+  "locks": {
+    "geometry": "draft",
+    "colors": "draft",
+    "style": "draft",
+    "identity": "draft",
+    "proportions": "draft",
+    "clothing": "draft",
+    "expression": "draft"
+  },
+  "approval": {
+    "designLock": false,
+    "productionLock": false
+  },
+  "notes": []
+}
