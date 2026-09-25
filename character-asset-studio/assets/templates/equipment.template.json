@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "1.0",
+  "kind": "equipment",
+  "assetId": "",
+  "version": "",
+  "status": "draft",
+  "source": {
+    "reference": "",
+    "sourceId": "",
+    "version": ""
+  },
+  "description": "",
+  "dimensions": {
+    "masterPx": {
+      "width": null,
+      "height": null
+    },
+    "silhouetteBoundsNormalized": {
+      "width": null,
+      "height": null
+    },
+    "relativeToCharacter": {
+      "lengthInHeadUnits": null,
+      "widthInHeadUnits": null
+    },
+    "aspectRatio": null,
+    "allowedScaleRange": null
+  },
+  "geometry": {
+    "silhouette": "",
+    "components": [],
+    "motifs": [],
+    "views": [],
+    "rigidParts": [],
+    "flexibleParts": []
+  },
+  "palette": [
+    {
+      "role": "",
+      "hex": "",
+      "tolerance": "",
+      "sourceReference": ""
+    }
+  ],
+  "style": {
+    "medium": "",
+    "linework": "",
+    "edges": "",
+    "shading": "",
+    "texture": "",
+    "detailDensity": ""
+  },
+  "materials": [],
+  "behavior": {
+    "function": "",
+    "permittedActions": [],
+    "massClass": "",
+    "balancePointNormalized": null,
+    "gripPointsNormalized": [],
+    "requiredHands": "",
+    "articulation": "",
+    "movingParts": [],
+    "clearance": ""
+  },
+  "attachment": {
+    "heldAnchors": [],
+    "waistAnchor": "",
+    "backAnchor": "",
+    "strapOrSheathReference": "",
+    "zOrder": "",
+    "occlusionNotes": ""
+  },
+  "states": [
+    "stowed",
+    "held"
+  ],
+  "locks": {
+    "size": "draft",
+    "shape": "draft",
+    "colors": "draft",
+    "style": "draft",
+    "materials": "draft",
+    "function": "draft",
+    "grip": "draft",
+    "attachment": "draft"
+  },
+  "approval": {
+    "designLock": false,
+    "productionLock": false
+  },
+  "notes": []
+}
