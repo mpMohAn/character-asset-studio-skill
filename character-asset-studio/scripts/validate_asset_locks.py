@@ -30,6 +30,15 @@ def palette_issues(data):
             or not color.get("tolerance") or not color.get("sourceReference")]
 
 
+def positive_number(value):
+    return isinstance(value, (int, float)) and not isinstance(value, bool) and value > 0
+
+
+def normalized_point(value):
+    return isinstance(value, (list, tuple)) and len(value) == 2 and all(
+        isinstance(v, (int, float)) and not isinstance(v, bool) and 0 <= v <= 1 for v in value)
+
+
 def validate(data, base_dir=None):
     kind = data.get("kind", "fusion" if data.get("mode") == "selected-fusion" else "")
     issues = required(data, ["assetId", "version", "source.reference", "source.sourceId"])
@@ -42,6 +51,19 @@ def validate(data, base_dir=None):
             "anchors.leftHand", "anchors.rightHand", "anchors.leftHip", "anchors.rightHip",
             "anchors.backUpper", "movement.dominantHand"])
         issues += palette_issues(data)
+        size = data.get("size", {})
+        for key in ("width", "height"):
+            if not positive_number(size.get("canvasPx", {}).get(key)):
+                issues.append(f"size.canvasPx.{key} must be positive")
+            value = size.get("characterBoundsNormalized", {}).get(key)
+            if not positive_number(value) or value > 1:
+                issues.append(f"size.characterBoundsNormalized.{key} must be within (0, 1]")
+        ground = size.get("groundLineNormalized")
+        if not isinstance(ground, (int, float)) or not 0 <= ground <= 1:
+            issues.append("size.groundLineNormalized must be within [0, 1]")
+        for name in ("leftHand", "rightHand", "leftHip", "rightHip", "backUpper"):
+            if not normalized_point(data.get("anchors", {}).get(name)):
+                issues.append(f"anchors.{name} must be a normalized [x, y] point")
     elif kind == "equipment":
         issues += required(data, ["description", "dimensions.masterPx.width",
             "dimensions.masterPx.height", "dimensions.silhouetteBoundsNormalized.width",
@@ -53,6 +75,24 @@ def validate(data, base_dir=None):
             "behavior.massClass", "behavior.balancePointNormalized", "behavior.requiredHands",
             "attachment.zOrder"])
         issues += palette_issues(data)
+        dims = data.get("dimensions", {})
+        for group, keys in (("masterPx", ("width", "height")),
+                            ("silhouetteBoundsNormalized", ("width", "height")),
+                            ("relativeToCharacter", ("lengthInHeadUnits", "widthInHeadUnits"))):
+            for key in keys:
+                value = dims.get(group, {}).get(key)
+                if not positive_number(value) or (group == "silhouetteBoundsNormalized" and value > 1):
+                    issues.append(f"dimensions.{group}.{key} is out of range")
+        if not positive_number(dims.get("aspectRatio")):
+            issues.append("dimensions.aspectRatio must be positive")
+        scale = dims.get("allowedScaleRange")
+        if not isinstance(scale, list) or len(scale) != 2 or not all(map(positive_number, scale)) or scale[0] > scale[1]:
+            issues.append("dimensions.allowedScaleRange must be a positive [min, max]")
+        if not normalized_point(data.get("behavior", {}).get("balancePointNormalized")):
+            issues.append("behavior.balancePointNormalized must be a normalized [x, y] point")
+        for point in data.get("behavior", {}).get("gripPointsNormalized", []):
+            if not normalized_point(point):
+                issues.append("behavior.gripPointsNormalized has an invalid point")
         if not data.get("behavior", {}).get("permittedActions"):
             issues.append("missing behavior.permittedActions")
         if not data.get("behavior", {}).get("gripPointsNormalized"):
