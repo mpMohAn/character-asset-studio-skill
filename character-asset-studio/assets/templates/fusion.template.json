@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.3",
+  "schemaVersion": "1.4",
   "mode": "selected-fusion",
   "newMasterId": "",
   "sources": [
@@ -180,5 +180,65 @@
     "equipmentSpecsApproved": false,
     "sizeShapeColorStyleVerified": false,
     "gripAndCarryVerified": false
+  },
+  "fidelityTargets": {
+    "bodyProportions": {
+      "sourceId": "",
+      "heightInHeads": null,
+      "shoulderToHipRatio": null,
+      "allowedDeviation": "match source silhouette; record visual rationale for perspective"
+    },
+    "palette": {
+      "sourceId": "",
+      "baseSwatchesRef": "",
+      "saturationLimit": "match the selected source palette and approved lighting range",
+      "backgroundDominance": "character remains more legible than environment"
+    },
+    "style": {
+      "sourceId": "",
+      "fingerprintRef": "",
+      "texture": "",
+      "shadingDepth": "",
+      "detailDensity": ""
+    },
+    "shape": {
+      "garmentSourceRefs": [],
+      "equipmentSourceRefs": [],
+      "noNewMotifs": true
+    },
+    "composition": {
+      "backgroundDetail": "subordinate",
+      "secondaryCharacters": "none unless requested",
+      "extraParticles": "none unless sourced"
+    }
+  },
+  "review": {
+    "status": "pending",
+    "proportions": {
+      "pass": false,
+      "notes": ""
+    },
+    "paletteAndSaturation": {
+      "pass": false,
+      "notes": ""
+    },
+    "sourceShapeAndCostume": {
+      "pass": false,
+      "notes": ""
+    },
+    "styleAndDetailDensity": {
+      "pass": false,
+      "notes": ""
+    },
+    "equipmentAndPose": {
+      "pass": false,
+      "notes": ""
+    },
+    "unrequestedElements": {
+      "pass": false,
+      "notes": ""
+    },
+    "reviewer": "",
+    "approvedVersion": ""
   }
 }
