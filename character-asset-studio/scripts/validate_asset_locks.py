@@ -138,6 +138,18 @@ def validate(data, base_dir=None):
         for item in data.get("equipmentLedger", []):
             if item.get("role") != "excluded-by-user" and interaction_ids.count(item.get("assetId")) != 1:
                 issues.append(f"equipment {item.get('assetId')} needs exactly one action interaction")
+                continue
+            if item.get("role") == "excluded-by-user":
+                continue
+            interaction = next(entry for entry in data["actionPlan"]["equipmentInteractions"]
+                               if entry.get("assetId") == item.get("assetId"))
+            if interaction.get("state") != item.get("state"):
+                issues.append(f"equipment {item.get('assetId')} state differs from action plan")
+            fields = ("hand", "gripPoint", "bodyContact", "lineOfAction", "clearance") \
+                if item.get("role") == "active" else ("attachmentAnchor", "bodyContact", "clearance")
+            for field in fields:
+                if interaction.get(field) is None or interaction.get(field) == "":
+                    issues.append(f"equipment {item.get('assetId')} interaction lacks {field}")
         return issues
     else:
         return ["unknown manifest kind"]
