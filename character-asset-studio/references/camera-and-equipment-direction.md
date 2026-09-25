@@ -71,6 +71,12 @@ Before posing, inventory every important item:
 
 If the item is unfamiliar, infer its function from geometry and context, mark uncertainty internally, and choose a conservative physically plausible use. Ask the user only when different interpretations would materially change the result.
 
+## Equipment-to-pose contract
+
+Before generating a pose, pair a locked character version with locked equipment versions. Define an interaction record for **every** item: equipment ID/version, apparent scale in head units, active or stowed state, selected permitted action, dominant/support hand, grip anchors, waist/back attachment if stowed, line of force, target, clearance, and visibility. Choose the pose from this record rather than decorating a completed pose with tools. When an action changes, retain size/shape/color/style locks and update only state, contacts, body mechanics, and allowed flexible movement.
+
+A bow shot needs the actual source bow shape and string path, a nocked arrow if present or explicitly supplied, supporting and drawing hands, shoulder rotation, gaze/target alignment, and adequate arm clearance. If the source provides no arrow, do not invent one merely to show a shot: choose a plausible bow-ready action or request authorization for that additional asset. A heavy poleaxe carried on the back needs a visible existing strap or an unobtrusive necessary attachment, blade clearance past the head, and a center-of-mass response. If the reference cannot support a credible grip or carry arrangement, resolve the missing view or revise the action before rendering.
+
 ## Equipment choreography
 
 Design the action from equipment affordances:
