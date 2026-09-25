@@ -75,6 +75,20 @@ Create a fusion manifest from `assets/templates/fusion.template.json` before gen
 8. Approve a silhouette/component plan before rendered exploration when shapes differ materially. For a small preview request, create one draft from the documented plan, inspect it, and present it for review. Do not call a generated draft an approved reusable master.
 9. Freeze one equipment-to-pose contract for each action: active tool, held/stowed states, body grip/contact, mounting anchors, weapon clearance, gaze, expression, and load-bearing stance. Keep the other tools visible and attached. Inspect the result against the inventory and ledger: all assigned traits visible, every selected source traceable, clothing slots coherent, expression readable, all equipment present exactly once at the locked scale, shape, colors and attachment, no unassigned feature, style matched, no clipping or anatomy errors. Repair a local defect if possible; regenerate from the component plan when drift is widespread. After approval, record the new master ID/version and full provenance.
 
+## Source fidelity before and after rendering
+
+Before a fusion render, write `fidelityTargets` from the selected source versions. Measure the body in head units and its shoulder-to-hip relationship from the chosen body reference. Do not use canvas occupancy or camera distance as a substitute for body proportions. Select actual source color swatches and lighting range; record medium, texture, shading depth, and detail density from the style anchor. List the shapes of every selected garment, crown/helmet, weapon, and other signature object. Make a short exclusion list for scenery, typography, particles, embellishment, and secondary characters absent from the requested character asset.
+
+After rendering, compare the generated figure side by side with the individual sources at a similar apparent size. Complete every `review` field with an observation; **reject the draft** if any one fails:
+
+1. **Proportions:** body height in heads, head size, torso/leg lengths, shoulder/hip ratio, and pose foreshortening remain within the selected body's visual range. A long-legged, enlarged, or stretched body fails even if the canvas size is correct.
+2. **Palette:** skin, fabric, metal, and background saturation stay within the selected source palette and motivated lighting. A highly orange, neon, glossy, or high-contrast treatment fails when the source is restrained.
+3. **Source shapes:** face, crown, garment cut/folds, sword or spear geometry, jewelry, and armor details match their assigned sources. A plausible but redesigned sword or more ornate garment fails.
+4. **Style and density:** medium, brush texture, edge treatment, shading, and amount of detail match the style anchor. Excess micro-ornament, dust, sparks, weapons in scenery, duplicated straps, or busy background detail count as noise and fail.
+5. **Function:** every selected item appears once at locked scale, with correct grip, sheath/strap, clearance, load, action, and hand/body contact.
+
+A corrective user comment about height, saturation, design drift, or noise is a **failed skill review**, not a request to hand-polish one image. Update the relevant source target, production constraint, and review criterion in the fusion record; then rerun the affected design stage and compare with the original sources. Do not claim the skill worked because an individual edit improved one image. If reference detail is insufficient to lock a source shape, mark it unresolved and request a better reference or design decision before production. Record remaining failures rather than declaring a master approved.
+
 ## Fusion exploration
 
 - Explore at most 2–4 materially different allocations of **the same two or three sources** when the user requests options.
