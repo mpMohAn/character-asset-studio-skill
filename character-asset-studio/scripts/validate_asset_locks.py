@@ -64,6 +64,46 @@ def validate(data, base_dir=None):
         for name in ("leftHand", "rightHand", "leftHip", "rightHip", "backUpper"):
             if not normalized_point(data.get("anchors", {}).get(name)):
                 issues.append(f"anchors.{name} must be a normalized [x, y] point")
+        if data.get("schemaVersion") == "1.1":
+            body = data.get("identity", {}).get("body", {})
+            for name in ("heightToHeadRatio", "shoulderToHipRatio"):
+                if not positive_number(body.get(name)):
+                    issues.append(f"identity.body.{name} needs a positive source-derived ratio")
+            measurements = body.get("physicalMeasurements", {})
+            for name in ("height", "weight", "chestCircumference", "waistCircumference", "hipCircumference"):
+                measurement = measurements.get(name, {})
+                status = measurement.get("status")
+                if status not in ("measured", "user-provided", "estimated", "unknown"):
+                    issues.append(f"physicalMeasurements.{name} has invalid status")
+                elif status == "unknown":
+                    if measurement.get("value") is not None or not measurement.get("sourceEvidence"):
+                        issues.append(f"physicalMeasurements.{name} needs null value and uncertainty reason")
+                elif not positive_number(measurement.get("value")) or not measurement.get("unit") \
+                        or not measurement.get("sourceEvidence"):
+                    issues.append(f"physicalMeasurements.{name} needs value, unit, and evidence")
+            anatomy = body.get("anatomy", {})
+            for name in ("neck", "shoulders", "chest", "torso", "abdomen", "waist", "hips", "arms", "legs"):
+                part = anatomy.get(name, {})
+                if part.get("visibility") not in ("visible", "occluded", "not-applicable") \
+                        or not part.get("sourceEvidence"):
+                    issues.append(f"anatomy.{name} needs visibility and source evidence")
+                elif part["visibility"] == "visible" and not (part.get("description") or part.get("definition")):
+                    issues.append(f"anatomy.{name} needs a visible-shape description")
+            abs_part = anatomy.get("abdomen", {})
+            if abs_part.get("visibility") == "visible" and abs_part.get("visibleMuscleSegments") in (None, "", "unknown"):
+                issues.append("visible abdomen needs an observed muscle-segment description")
+            strength = body.get("functionalStrength", {})
+            if not strength.get("basis") or not strength.get("sourceEvidence"):
+                issues.append("functionalStrength needs basis and evidence or an uncertainty reason")
+            clothing = data.get("identity", {}).get("clothing", {})
+            if not clothing.get("layerOrder") or not clothing.get("materialBehavior"):
+                issues.append("clothing needs layer order and material behavior")
+            for index, layer in enumerate(clothing.get("underlayers", [])):
+                if layer.get("visibility") not in ("visible", "occluded", "unknown", "not-applicable") \
+                        or not layer.get("sourceEvidence"):
+                    issues.append(f"underlayers[{index}] needs visibility and evidence")
+                elif layer["visibility"] == "visible" and (not layer.get("name") or not layer.get("description")):
+                    issues.append(f"underlayers[{index}] needs name and description")
     elif kind == "equipment":
         issues += required(data, ["description", "dimensions.masterPx.width",
             "dimensions.masterPx.height", "dimensions.silhouetteBoundsNormalized.width",
