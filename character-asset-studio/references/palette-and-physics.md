@@ -43,6 +43,10 @@ Define only properties that materially affect the requested frame:
 
 Use normalized screen directions where useful, for example wind `[-1, 0]` for right-to-left. Record units for measured values; otherwise use named qualitative levels consistently.
 
+## Character anatomy, costume, and shadows
+
+Keep the locked silhouette, torso/chest/hip shape, and visible muscle definition coherent as the pose changes. Use the recorded functional strength only to guide balance, load and muscle tension; a numeric weight is not inferred from the picture. Apply muscle contraction where an action loads the body, without changing the count of visible abdominal segments or adding anatomy hidden in the source. Move visible inner layers with the outer garments using the recorded coverage and draw order. Cast shadows follow the scene light and ground/object contacts; shadows are not a permanent color, tattoo, or body marking.
+
 ## Cause-and-effect rules
 
 - Place the center of mass over the support area for a stable pose; shift it deliberately for running, falling, recoil, or anticipation.
