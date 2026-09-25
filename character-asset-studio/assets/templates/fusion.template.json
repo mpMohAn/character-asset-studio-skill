@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.2",
+  "schemaVersion": "1.3",
   "mode": "selected-fusion",
   "newMasterId": "",
   "sources": [
@@ -78,7 +78,8 @@
         "sourceId": "",
         "feature": ""
       },
-      "accessories": []
+      "accessories": [],
+      "underlayers": []
     },
     "equipment": [],
     "palette": {
@@ -94,6 +95,44 @@
       "shading": "",
       "texture": "",
       "detailDensity": ""
+    },
+    "anatomy": {
+      "neck": {
+        "sourceId": "",
+        "feature": ""
+      },
+      "shoulders": {
+        "sourceId": "",
+        "feature": ""
+      },
+      "chest": {
+        "sourceId": "",
+        "feature": ""
+      },
+      "torso": {
+        "sourceId": "",
+        "feature": ""
+      },
+      "abdomen": {
+        "sourceId": "",
+        "feature": ""
+      },
+      "waist": {
+        "sourceId": "",
+        "feature": ""
+      },
+      "hips": {
+        "sourceId": "",
+        "feature": ""
+      },
+      "arms": {
+        "sourceId": "",
+        "feature": ""
+      },
+      "legs": {
+        "sourceId": "",
+        "feature": ""
+      }
     }
   },
   "conflicts": [],
@@ -128,7 +167,13 @@
     "gazeTarget": "",
     "centerOfMass": "",
     "supportFeet": "",
-    "equipmentInteractions": []
+    "equipmentInteractions": [],
+    "shadow": {
+      "contact": "",
+      "castDirection": "",
+      "softness": "",
+      "lightSource": ""
+    }
   },
   "lockChecks": {
     "characterSpecsApproved": false,
