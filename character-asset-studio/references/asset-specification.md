@@ -45,7 +45,7 @@ This applies to small accessories and large objects: glasses, hats, coats, shoes
 
 ## Locking and revision
 
-Each template has an immutable source reference and version, an approval state, and per-field locks. Set a lock to `locked` only after comparing it to the original at useful resolution. Keep uncertain values `draft` and do not claim full design lock. Store exact source/version pointers in every fusion and variant; do not silently borrow traits from a later version.
+Each template has an immutable source reference and version, an approval state, and per-field locks. Run `python3 scripts/validate_asset_locks.py path/to/spec.json` to check completeness; production accepts only a fully design-locked spec with source-based colors, dimensions, style, behavior, and anchors. Fusion validation loads the referenced character and equipment specs from disk and checks their exact IDs and versions. Set a lock to `locked` only after comparing it to the original at useful resolution. Keep uncertain values `draft` and do not claim full design lock. Store exact source/version pointers in every fusion and variant; do not silently borrow traits from a later version.
 
 - **Character:** lock identity, face, expression reference, hair, body proportions, clothing slots, palette, style, and attachment anchors.
 - **Equipment:** lock size relative to that character, silhouette/components, colors, materials, source style, function, grip, carry attachments, and permissible action states.
