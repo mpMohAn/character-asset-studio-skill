@@ -41,7 +41,8 @@
       "characterSpec": {
         "assetId": "",
         "version": "",
-        "designLock": false
+        "designLock": false,
+        "ref": ""
       }
     }
   ],
@@ -115,7 +116,8 @@
       "gripPoint": "",
       "state": "",
       "action": "",
-      "visible": true
+      "visible": true,
+      "specDesignLock": false
     }
   ],
   "assemblySeams": [],
