@@ -1,23 +1,87 @@
 {
-  "schemaVersion": "1.0",
+  "schemaVersion": "1.1",
   "mode": "selected-fusion",
   "newMasterId": "",
   "sources": [
     {
       "sourceId": "",
-      "version": ""
+      "version": "",
+      "reference": "",
+      "inventory": {
+        "face": "",
+        "expression": "",
+        "hair": "",
+        "body": "",
+        "clothing": {
+          "top": "",
+          "bottom": "",
+          "outerwear": "",
+          "footwear": "",
+          "accessories": []
+        },
+        "equipment": [],
+        "palette": "",
+        "materials": "",
+        "style": {
+          "medium": "",
+          "linework": "",
+          "edges": "",
+          "shading": "",
+          "texture": "",
+          "detailDensity": ""
+        }
+      }
     }
   ],
   "traitMap": {
-    "face": "",
-    "body": "",
-    "hair": "",
-    "silhouette": "",
-    "clothing": [],
+    "face": {
+      "sourceId": "",
+      "feature": ""
+    },
+    "expression": {
+      "sourceId": "",
+      "feature": ""
+    },
+    "hair": {
+      "sourceId": "",
+      "feature": ""
+    },
+    "body": {
+      "sourceId": "",
+      "feature": ""
+    },
+    "headwear": [],
+    "clothing": {
+      "top": {
+        "sourceId": "",
+        "feature": ""
+      },
+      "bottom": {
+        "sourceId": "",
+        "feature": ""
+      },
+      "outerwear": [],
+      "footwear": {
+        "sourceId": "",
+        "feature": ""
+      },
+      "accessories": []
+    },
     "equipment": [],
-    "palette": "",
-    "materials": "",
-    "style": ""
+    "palette": {
+      "sourceId": "",
+      "feature": ""
+    },
+    "materials": [],
+    "style": {
+      "sourceId": "",
+      "medium": "",
+      "linework": "",
+      "edges": "",
+      "shading": "",
+      "texture": "",
+      "detailDensity": ""
+    }
   },
   "conflicts": [],
   "provenance": [],
@@ -25,5 +89,16 @@
     "concept": false,
     "designLock": false,
     "productionLock": false
-  }
+  },
+  "equipmentLedger": [
+    {
+      "sourceId": "",
+      "item": "",
+      "role": "active | stowed-waist | stowed-back | excluded-by-user",
+      "hand": "",
+      "attachment": "",
+      "visible": true
+    }
+  ],
+  "assemblySeams": []
 }
