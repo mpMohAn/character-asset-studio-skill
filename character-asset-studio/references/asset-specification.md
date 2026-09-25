@@ -2,6 +2,8 @@
 
 Use this reference when defining, extracting, approving, or versioning reusable character and equipment masters.
 
+Use `assets/templates/character.template.json` and `assets/templates/equipment.template.json` for versioned, machine-checkable specifications. A source image alone is not a lock: record the reference, measured relationships, colors, shapes, style, and behavior, then approve the lock before producing action variants.
+
 ## Character identity pack
 
 Record the approved:
@@ -15,6 +17,8 @@ Record the approved:
 - outline, shading, material, and rendering style;
 - expression map with stable names and ordering;
 - attachment landmarks for head, eyes, ears, neck, hands, waist, feet, back, and vehicle seat.
+
+Record a concise physical description that another artist could use without seeing the source. Specify normalized character bounds, head-to-body and shoulder-to-hip ratios, ground line, dominant hand, movement limits, and hand/hip/back anchors. Keep the expression separate from permanent face construction so a pose can change without changing identity.
 
 Do not infer a tooth, garment, ornament, or facial detail that is absent from the selected expression reference.
 
@@ -35,27 +39,21 @@ Each reusable item should have:
 - attachment points, scale range, z-order, and occlusion masks;
 - interaction notes such as hand grip, head clearance, or horn cutouts.
 
+Also record a plain-language description, normalized silhouette bounds, aspect ratio, length and width relative to the character's head, permitted scale range, color swatches with tolerances, source style fingerprint, component shapes, exact motifs, available states/actions, grip and balance points, required hands, and stowed waist/back attachment. Pixel dimensions describe the master canvas; they do not alone define apparent size on the character. For rigid equipment, proportion and component geometry stay locked across pose and perspective; for flexible parts, define permissible deformation.
+
 This applies to small accessories and large objects: glasses, hats, coats, shoes, armor, tools, books, bikes, cars, and scenery modules.
 
-## Suggested manifest
+## Locking and revision
 
-```json
-{
-  "assetId": "equipment.battle-helmet",
-  "version": "1.0.0",
-  "status": "approved",
-  "source": "original-reference.png",
-  "master": "battle-helmet.front.png",
-  "views": ["front", "three-quarter-left", "three-quarter-right"],
-  "canvas": { "width": 2048, "height": 2048 },
-  "anchors": { "headCenter": [0.5, 0.46] },
-  "zOrder": "front-of-head-behind-horns",
-  "safePadding": 0.04,
-  "notes": ["Preserve both eye openings", "Do not cover horns"]
-}
-```
+Each template has an immutable source reference and version, an approval state, and per-field locks. Set a lock to `locked` only after comparing it to the original at useful resolution. Keep uncertain values `draft` and do not claim full design lock. Store exact source/version pointers in every fusion and variant; do not silently borrow traits from a later version.
 
-Use normalized coordinates from 0 to 1 for anchors so masters can scale across export sizes.
+- **Character:** lock identity, face, expression reference, hair, body proportions, clothing slots, palette, style, and attachment anchors.
+- **Equipment:** lock size relative to that character, silhouette/components, colors, materials, source style, function, grip, carry attachments, and permissible action states.
+- **Relationship:** lock character anchor to equipment grip/strap point, scale, depth order, handedness, active/stowed state, and movement clearance per pose.
+- **Gate:** do not set `approval.designLock=true` while a required field is unknown or draft. If the reference hides a crucial dimension, mark it inferred with rationale and review it before locking.
+- **Change:** corrections within accepted tolerance are patches; compatible new angles/anchors are minor versions; altered silhouette, colors, size, function, or character identity require a new major design version and renewed approval.
+
+A generative prompt can follow a lock but cannot guarantee exact geometry. Compare the resulting image to the spec; repair or reject drift rather than changing the spec to match the output.
 
 ## Versioning
 
