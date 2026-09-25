@@ -63,7 +63,7 @@ Checkpoint the background plate, blocking plan, every approved character layer, 
 
 Fuse exactly two or three **distinct source identities** into one new character. Count identities, not images or poses. For more than three identities, do not generate a single fusion: ask the user to select two or three, or propose staged separate fusions that the user explicitly chooses. Cast compositions may contain more characters; this limit applies only to fusion.
 
-Create a fusion manifest from `assets/templates/fusion.template.json` before generation. Keep originals immutable.
+Create a fusion manifest from `assets/templates/fusion.template.json` before generation. Point every `characterSpec.ref` and `equipmentLedger[].specRef` to the matching local, locked JSON spec relative to the fusion manifest. Run `python3 scripts/validate_asset_locks.py path/to/fusion.json` before rendering; fix all reported errors. The validator checks source count, lock states, reference IDs/versions, and an action interaction for every retained tool. Keep originals immutable.
 
 1. Inventory **each** source at full available resolution: face, expression, hair and headwear, body proportions, clothing by slot (top, bottom, outerwear, footwear, accessories), all held and worn equipment, palette, materials, and rendering style. Avoid a small roster thumbnail when a larger source exists.
 2. Assign a source ID to every output component. Name the exact feature inherited, including the face/expression, hair, body, each garment, and every tool. Use one source for the underlying face and body anatomy unless the user specifically requests a different split. A recognizable contribution from every source must survive; do not rely on a color or tiny ornament as the sole contribution.
