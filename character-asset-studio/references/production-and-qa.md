@@ -25,11 +25,11 @@ When using an image editor/generator for transparency, use this instruction unle
 ## Visual checks
 
 - Character identity and expression match the selected reference.
-- Body scale is consistent with the set unless deliberate perspective requires otherwise.
-- No unrequested teeth, garments, ornaments, outlines, patches, or duplicated parts.
+- Body scale and actual body proportions in head units match the selected character source; do not confuse apparent frame occupancy with anatomy. Review head, torso, leg, shoulder, and hip proportions separately.
+- No unrequested teeth, garments, ornaments, outlines, patches, or duplicated parts. Reject unnecessary micro-ornament, particles, scene debris, and busy background content that bury the source design.
 - Eyes remain structurally correct, including inside helmets and glasses.
-- Equipment retains approved shape, colors, patterns, rings, logos, and material.
-- Generated colors remain within the approved palette/tolerances; unexpected colors require review.
+- Equipment retains approved shape, colors, patterns, rings, logos, and material. Check blade length, point/guard silhouette, helmet/crown construction, and garment cut against the assigned source, not only broad category.
+- Generated colors remain within the approved palette/tolerances, including saturation and overall contrast relative to the style source; an exaggerated amber glow or glossy lighting requires review.
 - Hands contact equipment naturally; equipment does not float.
 - Weight, balance, gravity, support, wind response, cloth/hair motion, and the selected motion phase agree with each other unless an intentional stylized exception is recorded.
 - Pose and gesture support meaning. Sadness should not inherit a celebratory gesture without a deliberate reason.
