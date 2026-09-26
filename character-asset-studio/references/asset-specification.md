@@ -8,7 +8,7 @@ Use `assets/templates/character.template.json` and `assets/templates/equipment.t
 
 Record the approved:
 
-- front and useful three-quarter/side views;
+- a named view matrix rather than a fixed four-side set: front, back, both side profiles, four three-quarter directions, and high/low camera views when requested; store azimuth, elevation, projection, reference source, and visibility/occlusion per view;
 - body proportions and height-to-width ratio;
 - head/body relationship;
 - face construction, eye geometry, mouth and tooth rules;
