@@ -13,7 +13,7 @@ Build a controlled asset system rather than a collection of unrelated generation
 2. For a new project or materially incomplete brief, read [intake-and-planning.md](references/intake-and-planning.md).
 3. When creating or registering reusable assets, read [asset-specification.md](references/asset-specification.md) and create versioned character/equipment specs with size, shape, palette, style, and behavior locks.
 4. Before generation, correction, background removal, QA, or export, read [production-and-qa.md](references/production-and-qa.md).
-5. For multi-angle, animation, vehicle, game, VFX, or 3D deliverables, also read [rigging-and-3d.md](references/rigging-and-3d.md).
+5. For multi-angle, animation, vehicle, game, VFX, or 3D deliverables, also read [rigging-and-3d.md](references/rigging-and-3d.md). Map all requested directions explicitly, generate each view separately, check full-body framing and locked details, then assemble approved views.
 6. For reusable constraints or project labels, read [rule-labels.md](references/rule-labels.md).
 7. For manifests, lifecycle states, long-running work, or a web implementation, read [project-system.md](references/project-system.md).
 8. Before any render or pose change, read [palette-and-physics.md](references/palette-and-physics.md) and freeze the source palette and applicable physical properties.
