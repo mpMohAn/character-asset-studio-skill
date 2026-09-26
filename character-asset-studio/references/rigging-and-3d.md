@@ -12,6 +12,14 @@ Read this reference for interactive mascots, multiple angles, animation, games, 
 | Vehicles or rigid mechanical equipment | 3D master or proxy |
 | Film/VFX interchange | 3D source plus rendered deliveries |
 
+## Multi-direction character turnaround
+
+Treat a request for “different directions” as a view matrix, not a four-side limit. Start from a locked neutral character master and choose the requested views explicitly. A practical full set covers front, front-left three-quarter, left profile, rear-left three-quarter, back, rear-right three-quarter, right profile, front-right three-quarter, overhead/high camera, and low camera. Add direct top or underside views only when the user actually asks for those literal views; distinguish a low camera looking up at a standing character from an underside view. For interactive head tracking, specify head directions separately from body/camera directions.
+
+For each view record camera azimuth/elevation, character facing, projection (orthographic for comparable turnaround views; perspective for dramatic high/low views), frame bounds, visible face/hair/garment/equipment details, and occlusion. Lock the front/side/back orthographic views to a shared apparent height, ground line, neutral pose, light, palette, and rendering style. High and low camera views may change apparent proportions through perspective but must preserve the same physical proportions and construction. Never substitute a three-quarter pose for a true side or rear view.
+
+Generate and inspect each view individually at sufficient resolution, then assemble only approved views into a labeled sheet. Verify full body and both feet fit with margins in every panel, especially low views; verify garment front/back construction, hair and ornament placement, weapon count, grip, silhouette and scale. A labeled panel with clipped feet or incompatible clothing fails the turnaround and must be repaired before delivery. For exact repeatability across many angles, use a 3D or 2.5D proxy and preserve the source design's 2D rendering style.
+
 ## Layered 2D/2.5D source
 
 Separate at least the parts that need independent movement or occlusion: head, pupils, eyelids, brows, mouth shapes, torso, upper/lower arms, hands, legs, feet, tail, horns, ears, belt, front/back equipment, shadows, and effects. Define pivots, attachment anchors, masks, draw order, and neutral transforms.
