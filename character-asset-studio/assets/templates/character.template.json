@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.1",
+  "schemaVersion": "1.2",
   "kind": "character",
   "assetId": "",
   "version": "",
@@ -75,7 +75,9 @@
         "chest": {
           "description": "",
           "visibility": "unknown",
-          "sourceEvidence": ""
+          "sourceEvidence": "",
+          "shapeEvidence": "",
+          "visibleProportion": ""
         },
         "torso": {
           "description": "",
@@ -130,7 +132,58 @@
       "footwear": "",
       "accessories": [],
       "layerOrder": [],
-      "materialBehavior": ""
+      "materialBehavior": "",
+      "innerwear": {
+        "state": "unknown",
+        "items": [],
+        "sourceEvidence": "",
+        "notes": "Use none, present, occluded, or unknown; never invent unseen items"
+      },
+      "garments": [
+        {
+          "name": "",
+          "sourceReference": "",
+          "material": "",
+          "opacity": "unknown",
+          "silhouette": "",
+          "length": {
+            "hemLandmark": "",
+            "lengthInHeadUnits": null,
+            "sourceEvidence": ""
+          },
+          "fit": {
+            "chest": "",
+            "waist": "",
+            "hips": ""
+          },
+          "closure": {
+            "type": "",
+            "totalCount": null,
+            "fastenedPositions": [],
+            "openPositions": [],
+            "openingStartLandmark": "",
+            "openingEndLandmark": "",
+            "openingWidthAtChestInHeadUnits": null,
+            "sourceEvidence": ""
+          },
+          "overlapAndCoverage": {
+            "panelOverlap": "",
+            "bodyRegionsCovered": [],
+            "bodyRegionsVisible": [],
+            "bodyRegionsOccluded": [],
+            "sourceEvidence": ""
+          },
+          "viewOverrides": []
+        }
+      ],
+      "coverageReview": {
+        "status": "pending",
+        "sourceComparisonNotes": "",
+        "innerwearPass": false,
+        "closurePass": false,
+        "hemPass": false,
+        "visibleRegionsPass": false
+      }
     }
   },
   "size": {
@@ -183,7 +236,9 @@
     "clothing": "draft",
     "expression": "draft",
     "anatomy": "draft",
-    "clothingLayers": "draft"
+    "clothingLayers": "draft",
+    "garmentConstruction": "draft",
+    "coverage": "draft"
   },
   "approval": {
     "designLock": false,
