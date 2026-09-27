@@ -26,6 +26,8 @@ When using an image editor/generator for transparency, use this instruction unle
 
 - Character identity and expression match the selected reference.
 - Body scale and actual body proportions in head units match the selected character source; do not confuse apparent frame occupancy with anatomy. Review head, torso, leg, shoulder, and hip proportions separately.
+- Garments match their construction lock: exact layer/innerwear state, material opacity, hem landmark and length, opening endpoints and width, button count and fastened positions, panel overlap, and body regions visible per view. A visible bra, shorts, or extra layer that the source/user did not specify fails QA.
+- Review closures at full size: count actual fastened button-and-hole pairs, inspect uninterrupted placket overlap, and check that an open shirt has the intended opening from collar to the specified final fastened positions. If too few buttons are readable, mark unknown/fail rather than assuming compliance.
 - No unrequested teeth, garments, ornaments, outlines, patches, or duplicated parts. Reject unnecessary micro-ornament, particles, scene debris, and busy background content that bury the source design.
 - Eyes remain structurally correct, including inside helmets and glasses.
 - Equipment retains approved shape, colors, patterns, rings, logos, and material. Check blade length, point/guard silhouette, helmet/crown construction, and garment cut against the assigned source, not only broad category.
