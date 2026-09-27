@@ -64,7 +64,7 @@ def validate(data, base_dir=None, final=False):
         for name in ("leftHand", "rightHand", "leftHip", "rightHip", "backUpper"):
             if not normalized_point(data.get("anchors", {}).get(name)):
                 issues.append(f"anchors.{name} must be a normalized [x, y] point")
-        if data.get("schemaVersion") == "1.1":
+        if data.get("schemaVersion") in ("1.1", "1.2"):
             body = data.get("identity", {}).get("body", {})
             for name in ("heightToHeadRatio", "shoulderToHipRatio"):
                 if not positive_number(body.get(name)):
@@ -104,6 +104,45 @@ def validate(data, base_dir=None, final=False):
                     issues.append(f"underlayers[{index}] needs visibility and evidence")
                 elif layer["visibility"] == "visible" and (not layer.get("name") or not layer.get("description")):
                     issues.append(f"underlayers[{index}] needs name and description")
+        if data.get("schemaVersion") == "1.2":
+            clothing = data.get("identity", {}).get("clothing", {})
+            innerwear = clothing.get("innerwear", {})
+            if innerwear.get("state") not in ("present", "none", "occluded", "unknown") or not innerwear.get("sourceEvidence"):
+                issues.append("clothing.innerwear needs explicit state and source evidence")
+            if innerwear.get("state") == "present" and not innerwear.get("items"):
+                issues.append("clothing.innerwear present requires item details")
+            garments = clothing.get("garments", [])
+            if not garments:
+                issues.append("clothing.garments needs at least one construction lock")
+            for index, garment in enumerate(garments):
+                prefix = f"clothing.garments[{index}]"
+                for path in ("name", "sourceReference", "material", "opacity", "silhouette",
+                             "length.hemLandmark", "length.sourceEvidence",
+                             "closure.type", "closure.openingStartLandmark", "closure.openingEndLandmark",
+                             "closure.sourceEvidence", "overlapAndCoverage.panelOverlap",
+                             "overlapAndCoverage.sourceEvidence"):
+                    if required(garment, [path]):
+                        issues.append(f"{prefix}.{path} needs evidence/detail")
+                closure = garment.get("closure", {})
+                total = closure.get("totalCount")
+                open_positions = closure.get("openPositions", [])
+                fastened = closure.get("fastenedPositions", [])
+                if not isinstance(open_positions, list) or not isinstance(fastened, list):
+                    issues.append(f"{prefix}.closure positions must be lists")
+                elif set(map(str, open_positions)) & set(map(str, fastened)):
+                    issues.append(f"{prefix}.closure open/fastened positions overlap")
+                if total is not None and (not isinstance(total, int) or isinstance(total, bool) or total < 0
+                        or len(open_positions) + len(fastened) > total):
+                    issues.append(f"{prefix}.closure totalCount conflicts with positions")
+                if closure.get("type") == "buttons" and not fastened and not open_positions:
+                    issues.append(f"{prefix}.closure button positions need explicit state")
+                coverage = garment.get("overlapAndCoverage", {})
+                if not coverage.get("bodyRegionsCovered") or not isinstance(coverage.get("bodyRegionsVisible"), list):
+                    issues.append(f"{prefix} needs covered and visible body-region lists")
+            review = clothing.get("coverageReview", {})
+            if any(review.get(name) is not True for name in
+                   ("innerwearPass", "closurePass", "hemPass", "visibleRegionsPass")):
+                issues.append("clothing.coverageReview needs all four passes before design lock")
     elif kind == "equipment":
         issues += required(data, ["description", "dimensions.masterPx.width",
             "dimensions.masterPx.height", "dimensions.silhouetteBoundsNormalized.width",
