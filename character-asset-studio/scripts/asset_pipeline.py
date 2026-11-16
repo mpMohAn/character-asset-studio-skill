@@ -98,7 +98,13 @@ def comparison_sheet(with_skill: Path, without_skill: Path, output: Path, cell: 
 
 
 def package(source: Path, output: Path, manifest: Path | None) -> None:
-    files = sorted(path for path in source.rglob("*") if path.is_file())
+    output_path = output.resolve()
+    if manifest and manifest.resolve() == output_path:
+        raise ValueError("manifest and output ZIP must be different files")
+    files = sorted(
+        path for path in source.rglob("*")
+        if path.is_file() and path.resolve() != output_path
+    )
     if manifest:
         files.append(manifest)
     records = []

@@ -288,8 +288,13 @@ def main():
     parser.add_argument("manifest", type=Path)
     parser.add_argument("--final", action="store_true", help="require a passed source-fidelity review")
     args = parser.parse_args()
-    data = json.loads(args.manifest.read_text(encoding="utf-8"))
-    issues = validate(data, args.manifest.parent, final=args.final)
+    try:
+        data = json.loads(args.manifest.read_text(encoding="utf-8"))
+        if not isinstance(data, dict):
+            raise ValueError("manifest root must be a JSON object")
+        issues = validate(data, args.manifest.parent, final=args.final)
+    except (OSError, ValueError) as exc:
+        issues = [str(exc)]
     print(json.dumps({"ready": not issues, "issues": issues}, indent=2))
     return 1 if issues else 0
 

@@ -114,13 +114,6 @@ Both sides requested the same eight outputs in the same order:
 
 The checkerboard exposes transparency. The controlled sheet preserves alpha, the supplied back emblem, the shoulder shield, the costume palette, and a more consistent source style while coordinating balance, grip, weight, beard motion, and clothing motion with each action.
 
-<details>
-<summary>Open the controlled transparent PNG</summary>
-
-![Transparent multi-angle dwarf character asset sheet](docs/images/dwarf-asset-system-with-skill.png)
-
-</details>
-
 ### 2. Camera, lens intent, equipment use, perspective, and scene direction
 
 Both sides requested four matching shots:
