@@ -1,3 +1,5 @@
+<p align="center"><img src="character-asset-studio/assets/logo.png" width="192" alt="Character Asset Studio logo"></p>
+
 # Character Asset Studio
 
 Character Asset Studio is a reusable ChatGPT and Codex skill for producing consistent character assets, pose and expression variants, multi-character scenes, equipment, clothing, vehicles, sprites, and mascots.
