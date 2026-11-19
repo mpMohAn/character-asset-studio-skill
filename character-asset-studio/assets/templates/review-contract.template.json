@@ -1,0 +1,19 @@
+{
+  "threshold": 95,
+  "criteria": [
+    {
+      "id": "identity",
+      "requirement": "Replace with the approved identity and reference version",
+      "source": "user-approved reference",
+      "weight": 1,
+      "critical": true
+    },
+    {
+      "id": "requested-change",
+      "requirement": "Replace with the exact requested modification",
+      "source": "latest user instruction",
+      "weight": 1,
+      "critical": true
+    }
+  ]
+}

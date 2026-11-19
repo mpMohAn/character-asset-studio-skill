@@ -7,6 +7,25 @@ description: Plan, generate, inspect, and package consistent reusable character,
 
 Build a controlled asset system rather than a collection of unrelated generations. Preserve approved character identity, equipment geometry, materials, colors, proportions, and export rules across every variant.
 
+## Requirements
+
+Use an agent with an image-generation or image-editing tool for rendering. The bundled utilities run in a local environment with Python 3.10 or newer. Install Pillow for image processing, palette extraction, and transparency checks. Agensi supplies the instructions through the connected agent. Local script execution requires access to the user's selected working directory.
+
+## First use
+
+1. Identify the requested deliverable and available tools. For an incomplete brief, collect the source reference or character description, desired variants, and output dimensions.
+2. For a new set, start with one master and one representative variant. Record identity, palette, equipment, and output constraints in the supplied templates. Keep unapproved fields in draft.
+3. Save original references separately from working files. Initialize a project manifest before batch production.
+4. If scripts are delivered as temporary files, save the supplied project template locally and pass its path explicitly.
+5. Normalize the first exported image, run structural QA, and inspect it visually before expanding the batch.
+6. Checkpoint approved assets and pending variants after each completed item. Report any unavailable tool or failed check before claiming completion.
+
+For a local smoke test, read [local-smoke-test.md](references/local-smoke-test.md).
+
+## Required generation QA
+
+Before any generation or edit, read [generation-review-loop.md](references/generation-review-loop.md). Capture every active user requirement in a frozen contract, check the generation request before execution, inspect every completed render, and run `scripts/review_gate.py` before calling an output finished. Failed or unknown critical details trigger a targeted correction and a full new review. Preserve approved details and source identity. Report unresolved failures honestly after the second attempt.
+
 ## Route the request
 
 1. Determine whether the task is exploration, master-asset creation, variant production, correction, QA, packaging, 2D rigging, or 3D planning.

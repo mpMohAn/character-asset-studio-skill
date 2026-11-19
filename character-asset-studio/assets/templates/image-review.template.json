@@ -1,0 +1,22 @@
+{
+  "imageSha256": "REPLACE_WITH_SHA256_OF_REVIEWED_IMAGE",
+  "contractSha256": "REPLACE_WITH_SHA256_OF_CANONICAL_CONTRACT",
+  "structuralQa": {
+    "status": "unknown",
+    "evidence": ""
+  },
+  "checks": [
+    {
+      "id": "identity",
+      "status": "unknown",
+      "evidence": "",
+      "correction": ""
+    },
+    {
+      "id": "requested-change",
+      "status": "unknown",
+      "evidence": "",
+      "correction": ""
+    }
+  ]
+}

@@ -2,6 +2,8 @@
 
 Use this reference for generation, editing, background removal, correction, export, and packaging.
 
+Read [generation-review-loop.md](generation-review-loop.md) before production and apply its frozen requirements, per-attempt review, correction, and delivery gates.
+
 ## Production sequence
 
 1. Freeze the output contract and selected master versions.
